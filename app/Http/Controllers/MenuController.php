@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\apache_child_terminate;
+use Illuminate\Http\Request;
+use App\Model\Userdata;
 
 class MenuController extends Controller
 {
@@ -16,5 +18,9 @@ class MenuController extends Controller
     return view('menu',['menu'=>$menu]);
   }
 
+  public function output(Request $request){
+    $Users = Userdata::all();
+    return view('menu',['items'=>$Users]);
+  }
 
 }
