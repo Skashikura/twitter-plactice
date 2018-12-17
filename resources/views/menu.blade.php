@@ -12,9 +12,10 @@
                   background-color: rgba(0,0,0,0.3);
                   width: 300px;
                   display: inline-block;
-
+                  color: rgba(150, 50, 50,1);
+                  margin-bottom:10px;
                   ">
-                    Logged in !!
+                    Hello
                   </h1>
                 </div>
             </div>
@@ -25,7 +26,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
 
-                <div class="card-header" style="border:solid 1px #dee2e6;">ユーザ一覧</div>
+                <div class="card-header" style="border:solid 1px #dee2e6;">一覧表示のみ対応中、新規更新削除は未実装。</div>
 
                 <a class="btn btn-primary" style="width:100px;margin:5px" href="{{ url('/users/create') }}" role="button">新規追加</a>
 
@@ -35,6 +36,8 @@
                         <th scope="col" style="border:solid 1px #dee2e6;">ID</th>
                         <th scope="col" style="border:solid 1px #dee2e6;">名前</th>
                         <th scope="col" style="border:solid 1px #dee2e6;">メール</th>
+                        <th scope="col" style="border:solid 1px #dee2e6;">作成日時</th>
+                        <th scope="col" style="border:solid 1px #dee2e6;">最終更新</th>
                         <th scope="col" style="border:solid 1px #dee2e6;">操作</th>
                       </tr>
                     </thead>
@@ -44,8 +47,10 @@
                                 <th scope="row">{{ $item->id }}</th>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->email }}</td>
+                                <td>{{ $item->created_at }}</td>
+                                <td>{{ $item->updated_at }}</td>
                                 <td>
-                                    <a class="btn btn-primary" href="/users/edit/{{ $item->id }}" role="button">修正</a>
+                                    <a class="btn btn-primary" href="/users/edit/{{ $item->id }}" role="button" style="margin-bottom:5px;">修正</a>
                                     <button type="button" data-id="{{ $item->id }}" class="btn btn-secondary delButton">削除</button>
                                 </td>
                             </tr>
