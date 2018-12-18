@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/menu', 'MenuController@test');
 Route::get('/menu', "MenuController@output");
+Route::get('/home',"TweetController@home");
+Route::post('/tweet',"TweetController@post");
