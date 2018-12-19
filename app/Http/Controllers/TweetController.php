@@ -9,10 +9,17 @@ use App\Model\Tweets;
 class TweetController extends controller
 {
   public function home(Request $request){
-    $Tweets = Tweets::orderby('created_at','desc')->get();
-    // $Tweets = Tweets::orderby('created_at','desc');
-    // $Tweets = Tweets::lists();
-    // $Tweets = Tweets::get();
+    // $Tweets = Tweets::select('tweets.*','users.name')
+    //   ->join('users','tweets.user_id','=','users.id')
+    //   ->orderby('created_at','desc')
+    //   ->get();
+    $Tweets = Tweets::orderby('created_at','desc')
+      ->get();
+
+
+      $test = Tweets::find(1);
+      dd($test->userdata->name);
+
     return view('home',['tweets'=>$Tweets]);
   }
 
