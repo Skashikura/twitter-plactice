@@ -22,3 +22,5 @@ Route::get('/menu', 'MenuController@test');
 Route::get('/menu', "MenuController@output");
 Route::get('/home',"TweetController@home");
 Route::post('/tweet',"TweetController@post");
+Route::get('/users',"TweetController@list");
+Route::post('/users/follow',"TweetController@fpost");

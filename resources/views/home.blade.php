@@ -12,7 +12,9 @@
                 //ここで操作してるのはtweetsのデータ。ユーザーデータじゃない。?>
                  <?php //dd($tweets);?>
 
+
                 @foreach($tweets as $tweet)
+                
                 <?php //  {{ ここの中の -> こいつを持ってくる }} ?>
                     <div class="card-body">
                         <?php //@FIXME ツイートを表示 ?>
@@ -23,7 +25,7 @@
                                 <?php //@FIXME ツイートした人の名前と時間を表示
                                 //ユーザーデータが欲しい時は、Auth::userを使う。authのmigrateしてれば。
                                 //ユーザーネームはtweetsクラスの中に入ってないから?>
-                                {{ $tweet->name }} / {{ $tweet->created_at }}
+                                {{ $tweet->user->name }} / {{ $tweet->created_at }}
                             </div>
 
                             <?php //@FIXME Favはマウスオーバーでアニメーションするだけの状態 ?>
