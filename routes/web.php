@@ -24,3 +24,4 @@ Route::get('/home',"TweetController@home");
 Route::post('/tweet',"TweetController@post");
 Route::get('/users',"TweetController@list");
 Route::post('/users/follow',"TweetController@fpost");
+Route::post('/users/unfollow',"TweetController@unfollow");

@@ -41,7 +41,11 @@
                                 @else
 
                                 <?php //@FIXME フォロー中の表示 ?>
-                                フォロー中
+                                {!! Form::open(['id' => 'formTweet', 'url' => 'users/unfollow/', 'enctype' => 'multipart/form-data']) !!}
+                                    {{Form::hidden('unfollowId', $user->id, ['id' => 'unfollowId'])}}
+                                    <button type="submit" class="btn btn-light">
+                                        {{ __('フォロー中') }}
+                                    </button>
                                 @endif
                                 <?php //dd($user->follows->follow_id) ?>
                         </div>
