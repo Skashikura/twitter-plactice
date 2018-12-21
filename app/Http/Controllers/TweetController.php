@@ -20,12 +20,27 @@ class TweetController extends controller
     //   ->join('users','tweets.user_id','=','users.id')
     //   ->orderby('created_at','desc')
     //   ->get();
-    $Tweets = Tweets::orderby('created_at','desc')
-      ->get();
+    // $Tweets = Tweets::orderby('created_at','desc')
+    //   ->get();
 
+    $my_user = Follows::where('user_id', Auth::id())->get();
+    // $my_user = Follows::find(1);
+
+                      //userテーブルの中にあるAuth::idをfind
+    $follow_id_list = [];
+                      // 配列宣言
+    foreach ($my_user as $follow) {
+
+                      // my_user(Userテーブル)のfollowsテーブルの情報を配列として認識させる
+    $follow_id_list[] = $follow->follow_id;
+                        // 配列として認識させたfollowの中のfollow_idカラムの分だけforeach、全て配列変数化
+
+                      }
+                      //dd($follow_id_list);
 
       // $test = Tweets::find(1);
       // dd($test->user->name);
+    $Tweets = Tweets::whereIn('user_id',$follow_id_list)->get();
 
     return view('home',['tweets'=>$Tweets]);
   }
@@ -79,7 +94,7 @@ class TweetController extends controller
   public function unfollow(Request $request)
   {
     $unfollow = Follows::where('user_id' , [Auth::id()])
-    ->where('follow_id',$request->unfollowId);
+                      ->where('follow_id',$request->unfollowId);
     $unfollow->delete();
     return redirect('users');
   }
