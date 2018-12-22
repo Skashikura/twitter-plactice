@@ -24,23 +24,17 @@ class TweetController extends controller
     //   ->get();
 
     $my_user = Follows::where('user_id', Auth::id())->get();
-    // $my_user = Follows::find(1);
-
-                      //userテーブルの中にあるAuth::idをfind
     $follow_id_list = [];
-                      // 配列宣言
-    foreach ($my_user as $follow) {
 
-                      // my_user(Userテーブル)のfollowsテーブルの情報を配列として認識させる
-    $follow_id_list[] = $follow->follow_id;
-                        // 配列として認識させたfollowの中のfollow_idカラムの分だけforeach、全て配列変数化
-
-                      }
-                      //dd($follow_id_list);
-
+    foreach ($my_user as $follow)
+    {
+      $follow_id_list[] = $follow->follow_id;
+    }
+    //dd($follow_id_list);
       // $test = Tweets::find(1);
       // dd($test->user->name);
-    $Tweets = Tweets::whereIn('user_id',$follow_id_list)->get();
+    $Tweets = Tweets::whereIn('user_id',$follow_id_list)
+      ->get();
 
     return view('home',['tweets'=>$Tweets]);
   }

@@ -51,14 +51,14 @@
                                 @endif
                             </li>
                         @else
-                        <?php
-                            // <li class="nav-item" style="display:flex; justify-content: center;align-items: center;">
-                            //     <a class="navbar-brand" href="{{ route('user_list') }}" style="font-size:13px">
+                        <!-- <?php
+                             //<li class="nav-item" style="display:flex; justify-content: center;align-items: center;">
+                            //     <a class="navbar-brand" href="/users" style="font-size:13px">
                             //         {{ __('ユーザ一覧') }}
-                            //         <!-- {{ config('app.name', 'Laravel') }} -->
+                            //          {{ config('app.name', 'Laravel') }}
                             //     </a>
-                            // </li>
-?>
+                             //</li>
+                        ?> -->
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
