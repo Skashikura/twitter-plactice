@@ -10,7 +10,8 @@ use App\Model\Follows;
 
 class TweetController extends controller
 {
-  public function __construct() {
+  public function __construct()
+  {
     $this->middleware('auth');//ログインしてない状態でアクセスできなくする、ログイン画面を強制表示
   }
 
